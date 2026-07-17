@@ -1,0 +1,435 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Project\_Proposal},
+  pdfauthor={Tim Eckart},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Project\_Proposal}
+\author{Tim Eckart}
+\date{2026-07-12}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\subsection{Project Proposal}\label{project-proposal}
+
+\emph{1.)} Load your dataset into R and take a snapshot of the data.
+There is no requirement on how much to show, and there is no need to
+show the entire dataset. Even 10 rows should be enough.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(data.table)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'data.table'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:base':
+## 
+##     %notin%
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{azure\_vm\_raw }\OtherTok{=} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"trace\_data\_vmtable\_vmtable.csv"}\NormalTok{, }\AttributeTok{col\_names =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{n\_max =} \DecValTok{10}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 10 Columns: 11
+\end{verbatim}
+
+\begin{verbatim}
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (4): X1, X2, X3, X9
+## dbl (7): X4, X5, X6, X7, X8, X10, X11
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{azure\_vm\_raw}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 11
+##    X1        X2    X3        X4     X5      X6      X7      X8 X9      X10   X11
+##    <chr>     <chr> <chr>  <dbl>  <dbl>   <dbl>   <dbl>   <dbl> <chr> <dbl> <dbl>
+##  1 71fJw0x+~ GB6u~ 2sh/~ 5.58e5 1.67e6 91.8     0.729  20.8    Dela~     8    32
+##  2 rKggHO/0~ ub4t~ +Zra~ 4.24e5 4.25e5 37.9     3.33   37.9    Unkn~     4    32
+##  3 YrR8gPtB~ 9Lrd~ GEyI~ 1.13e6 1.13e6  0.304   0.221   0.304  Unkn~     4    32
+##  4 xzQ++JF1~ 0XnZ~ 7aCQ~ 0      2.59e6 98.6    30.3    98.2    Inte~     2     4
+##  5 vZEivnha~ HUGa~ /s/D~ 2.28e5 2.30e5 82.6    13.9    82.6    Unkn~     2     4
+##  6 MqvcZ6Au~ p14c~ ZFCk~ 1.40e6 1.40e6  0.0979  0.0352  0.0979 Unkn~     4    32
+##  7 034PavXA~ L9ut~ k2nh~ 1.42e6 1.42e6  0.0713  0.0327  0.0713 Unkn~     4    32
+##  8 fBpt5HSY~ IwAB~ uYvK~ 2.41e6 2.41e6  0.260   0.0723  0.260  Unkn~    24    64
+##  9 ZdSiRJc4~ 5tTf~ vLlC~ 1.66e5 1.68e5  0.0985  0.0342  0.0985 Unkn~     4    32
+## 10 uzIY/rjn~ 3Gjj~ x9Ba~ 2.69e5 2.69e5  0.0662  0.0349  0.0662 Unkn~     4    32
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Answer:} Here is the data set listed from Microsoft Azure
+  Public Dataset V2 on Github:
+  \url{https://github.com/Azure/AzurePublicDataset/releases/tag/dataset-v2}
+  . The data vmtable file has no header rows. The names are from the
+  repository's schema file.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{azure\_schema }\OtherTok{=} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"schema.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 25 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (3): filepattern, content, format
+## dbl (1): field_number
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(azure\_schema,}
+             \AttributeTok{caption =} \StringTok{"Schema for the Azure 2019 VM trace (from schema.csv)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4953}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1215}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2710}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1121}}@{}}
+\caption{Schema for the Azure 2019 VM trace (from
+schema.csv)}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+filepattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+field\_number
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+format
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+filepattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+field\_number
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+format
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+vm\_virtual\_core\_bucket\_definition.csv & 1 & bucket & STRING \\
+vm\_virtual\_core\_bucket\_definition.csv & 2 & definition & STRING \\
+vm\_memory\_bucket\_definition.csv & 1 & bucket & STRING \\
+vm\_memory\_bucket\_definition.csv & 2 & definition & STRING \\
+subscriptions/subscriptions.csv.gz & 1 & subscription id &
+STRING\_HASH \\
+subscriptions/subscriptions.csv.gz & 2 & timestamp first vm created &
+INTEGER \\
+subscriptions/subscriptions.csv.gz & 3 & count vms created & INTEGER \\
+deployment/deployment.csv.gz & 1 & deployment id & STRING\_HASH \\
+deployment/deployment.csv.gz & 2 & deployment size & INTEGER \\
+vmtable/vmtable.csv.gz & 1 & vm id & STRING\_HASH \\
+vmtable/vmtable.csv.gz & 2 & subscription id & STRING\_HASH \\
+vmtable/vmtable.csv.gz & 3 & deployment id & STRING\_HASH \\
+vmtable/vmtable.csv.gz & 4 & timestamp vm created & INTEGER \\
+vmtable/vmtable.csv.gz & 5 & timestamp vm deleted & INTEGER \\
+vmtable/vmtable.csv.gz & 6 & max cpu & DOUBLE \\
+vmtable/vmtable.csv.gz & 7 & avg cpu & DOUBLE \\
+vmtable/vmtable.csv.gz & 8 & p95 max cpu & DOUBLE \\
+vmtable/vmtable.csv.gz & 9 & vm category & STRING \\
+vmtable/vmtable.csv.gz & 10 & vm virtual core count bucket & STRING \\
+vmtable/vmtable.csv.gz & 11 & vm memory (gb) bucket & STTRING \\
+vm\_cpu\_readings/vm\_cpu\_readings-file-*-of-195.csv.gz & 1 & timestamp
+& INTEGER \\
+vm\_cpu\_readings/vm\_cpu\_readings-file-*-of-195.csv.gz & 2 & vm id &
+STRING\_HASH \\
+vm\_cpu\_readings/vm\_cpu\_readings-file-*-of-195.csv.gz & 3 & min cpu &
+DOUBLE \\
+vm\_cpu\_readings/vm\_cpu\_readings-file-*-of-195.csv.gz & 4 & max cpu &
+DOUBLE \\
+vm\_cpu\_readings/vm\_cpu\_readings-file-*-of-195.csv.gz & 5 & avg cpu &
+DOUBLE \\
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Here is the Schema.csv listing the column headers name for the table.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+
+\NormalTok{vm\_cols }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"vm\_id"}\NormalTok{, }\StringTok{"subscription\_id"}\NormalTok{, }\StringTok{"deployment\_id"}\NormalTok{, }\StringTok{"timestamp\_vm\_created"}\NormalTok{, }\StringTok{"timestamp\_vm\_deleted"}\NormalTok{, }\StringTok{"max\_cpu"}\NormalTok{, }
+            \StringTok{"avg\_cpu"}\NormalTok{, }\StringTok{"p95\_max\_cpu"}\NormalTok{, }\StringTok{"vm\_category"}\NormalTok{, }\StringTok{"vm\_virtual\_core\_count\_bucket"}\NormalTok{, }\StringTok{"vm\_memory\_gb\_bucket"}\NormalTok{)}
+
+\NormalTok{azure\_vm\_table }\OtherTok{=} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"trace\_data\_vmtable\_vmtable.csv"}\NormalTok{, }\AttributeTok{col\_names =}\NormalTok{ vm\_cols, }
+                          \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{vm\_virtual\_core\_count\_bucket =} \FunctionTok{col\_character}\NormalTok{(), }\AttributeTok{vm\_memory\_gb\_bucket =} \FunctionTok{col\_character}\NormalTok{()))}
+
+\FunctionTok{head}\NormalTok{(azure\_vm\_table[, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\SpecialCharTok{:}\DecValTok{11}\NormalTok{)],}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    vm_id                                           subscription_id deployment_id
+##    <chr>                                           <chr>           <chr>        
+##  1 71fJw0x+SDRdAxKPwLyHZhTgQpYw2afS6tjJhfT6kHnmLH~ GB6uQC1NSArW5n~ 2sh/ZjaYdfps~
+##  2 rKggHO/04j31UFy65mDTwtjdMQL/G03xWfl3xGeiilB4/W~ ub4ty8ygwOECrI~ +ZraIDUNaWYD~
+##  3 YrR8gPtBmfNaOdnNEW5If1SdTqQgGQHEnLHGPjySt53bKW~ 9LrdYRcUfGbmL2~ GEyIElfPSFup~
+##  4 xzQ++JF1UAkh70CDhmzkiOo+DQn+E2TLErCFKEmSswv1pl~ 0XnZZ8sMN5HY+Y~ 7aCQS6fPUw9r~
+##  5 vZEivnhabRmImDr+JqKqZnpIM3WxtypwoxjfjnklR/idyR~ HUGaZ+piPP4eHj~ /s/D5VtTQDxy~
+##  6 MqvcZ6Au5ouI6if56MJHmoSqHtX8oRv0dPkaxCId3aUcr1~ p14cXGYqCKCcF7~ ZFCk80sIQzr4~
+##  7 034PavXAkWso23QmI+NMty3u9XA2FVhIKKOZV+tbQru/n5~ L9utvn29uJD9za~ k2nh5l37CN78~
+##  8 fBpt5HSYGsQyRQSSrhj+n5IDFzMJKf2k6Am1OFEIGpFl6n~ IwABYzfINELEB6~ uYvK2XjSSN+Q~
+##  9 ZdSiRJc4t7SuV2uOfhbjkGXJPK6w1cuE8NcEYb+LJTOvWa~ 5tTf4IJxkp/u62~ vLlC4aSY52U7~
+## 10 uzIY/rjnHYDAGJ7AHxffw+n+QlBriI1s12yb7MtYSykiZf~ 3GjjR481xxGvEc~ x9BaDDFxkejZ~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(azure\_vm\_table[, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)],}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 8
+##    timestamp_vm_created timestamp_vm_deleted max_cpu avg_cpu p95_max_cpu
+##                   <dbl>                <dbl>   <dbl>   <dbl>       <dbl>
+##  1               558300              1673700 91.8     0.729      20.8   
+##  2               424500               425400 37.9     3.33       37.9   
+##  3              1133100              1133700  0.304   0.221       0.304 
+##  4                    0              2591400 98.6    30.3        98.2   
+##  5               228300               229800 82.6    13.9        82.6   
+##  6              1395600              1397700  0.0979  0.0352      0.0979
+##  7              1422300              1422600  0.0713  0.0327      0.0713
+##  8              2414400              2414700  0.260   0.0723      0.260 
+##  9               165900               168300  0.0985  0.0342      0.0985
+## 10               268500               269100  0.0662  0.0349      0.0662
+## # i 3 more variables: vm_category <chr>, vm_virtual_core_count_bucket <chr>,
+## #   vm_memory_gb_bucket <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(azure\_vm\_table[, }\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{)],}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 10 x 3
+##    vm_category       vm_virtual_core_count_bucket vm_memory_gb_bucket
+##    <chr>             <chr>                        <chr>              
+##  1 Delay-insensitive 8                            32                 
+##  2 Unknown           4                            32                 
+##  3 Unknown           4                            32                 
+##  4 Interactive       2                            4                  
+##  5 Unknown           2                            4                  
+##  6 Unknown           4                            32                 
+##  7 Unknown           4                            32                 
+##  8 Unknown           24                           64                 
+##  9 Unknown           4                            32                 
+## 10 Unknown           4                            32
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Here is the columns renamed to their respected headers per Schema.
+\end{itemize}
+
+\textbf{2.)} Write a paragraph saying who is working on the project (if
+team), or your name otherwise. Explain briefly what the dataset is
+about. Provide a link so I can access the dataset if necessary. State
+how many observations there are.\n
+
+Finally, write one or two sentences about what the goal of the analysis
+is. Clearly state the response variable and explanatory variables. This
+should be a simple thing such as: The goal of this analysis is to
+predict the mpg for certain cars based on x,y,z,a,b,c,\ldots{}\n
+
+\textbf{Answer:} This project will be conducted individually by Timothy
+Eckart, using the \emph{vmtable} trace from the \textbf{Azure Public
+Dataset V2}, published by Microsoft in the AzurePublicDataset repository
+on GitHub
+(\url{https://github.com/Azure/AzurePublicDataset/releases/tag/dataset-v2}).
+The dataset is a sanitized, representative subset of Microsoft Azure's
+first-party virtual machine workload in one geographical region,
+collected over 30 consecutive days in 2019 and released under a CC-BY
+license. The data contains 2,695,548 observations on virtual machines
+from 6,687 Azure customer subscriptions, including average, maximum, and
+95th-percentile CPU utilization, VM category, virtual core count, memory
+size, and creation/deletion time stamps. Each observation represents one
+virtual machine's full lifetime within the trace. The goal of this
+analysis is to predict a virtual machine's average CPU utilization
+(\texttt{avg\_cpu}) based on its category, virtual core count, memory
+size, and lifetime derived from its creation and deletion timestamp. \n
+
+\begin{itemize}
+\tightlist
+\item
+  Per the dataset's CC-BY attribution requirement this project cites the
+  accompanying SOSP'17 paper (Cortez 2017; see References).
+\end{itemize}
+
+\subsection{Reference}\label{reference}
+
+Cortez, E., Bonde, A., Muzio, A., Russinovich, M., Fontoura, M., \&
+Bianchini, R. (2017). Resource Central: Understanding and predicting
+workloads for improved resource management in large cloud platforms. In
+\emph{Proceedings of the 26th Symposium on Operating Systems Principles
+(SOSP '17)} (pp.~153--167). ACM.
+\url{https://www.microsoft.com/en-us/research/wp-content/uploads/2017/10/Resource-Central-SOSP17.pdf}
+\n
+
+Microsoft Azure. (2019). \emph{AzurePublicDataset: Microsoft Azure
+traces} (Version 2) {[}Data set{]}. GitHub.
+\url{https://github.com/Azure/AzurePublicDataset}
+
+\n
+\n
+
+\end{document}
